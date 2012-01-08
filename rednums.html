@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Rednums</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+</head> 
+<body> 
+<div data-role="page">
+<div data-role="header">
+	<h1>Rednums</h1>
+</div>
+<div data-role="content">	
+<div class="content-primary">
+<form id="form">
+<div data-role="fieldcontain">
+	<label for="select-server" class="select">Server:</label>
+	<select name="select-server" id="select-server" data-native-menu="false">
+		<option value="">Select server...</option>
+		<!-- Insert your server list here -->
+		<option value="http://dev.dynacase.org">dev</option>
+		<option value="https://support.anakeen.com">support</option>
+	</select>
+</div>
+<div data-role="fieldcontain">
+	<label for="issue">Issue:</label>
+	<input type="number" name="issue" id="issue" value=""  />
+</div>
+<div class="ui-body ui-body-b">
+	<fieldset class="ui-grid-a">
+		<button type="submit" data-theme="a">Submit</button>
+	</fieldset>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+$('#form').submit(function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  if( $('#select-server').val() == '' ) {
+    return false;
+  }
+  window.open(
+    $('#select-server').val() +
+    '/search?q=' +
+    encodeURIComponent( $('#issue').val() )
+  );
+  return false;
+});
+</script>
+</body>
+</html>
